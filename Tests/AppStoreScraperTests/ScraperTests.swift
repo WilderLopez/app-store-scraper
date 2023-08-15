@@ -19,4 +19,10 @@ final class ScraperTests: XCTestCase {
         let application = try await scraper.getApplication(668357845)
         XCTAssertNotNil(application)
     }
+    
+    func testGetReview() async throws {
+        let scraper = Scraper()
+        let review = try await scraper.getReview(668357845, page: 1, sortBy: .helpful)
+        XCTAssertNotNil(review)
+    }
 }

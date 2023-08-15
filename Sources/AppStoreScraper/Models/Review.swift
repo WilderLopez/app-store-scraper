@@ -27,7 +27,7 @@ public struct Content: Codable {
 }
 
 public struct ContentType: Codable {
-    public let type: String
+    public let type: String?
 }
 
 public struct Link: Codable {
@@ -42,15 +42,31 @@ public struct LinkAttributes: Codable {
 public struct Entry: Codable {
     public let author: Author
     public let updated: Updated
-    public let imRating: Label
-    public let imVersion: Label
-    public let id: Label
-    public let title: Label
+    public let rating: Label
+    public let version: Version
+    public let id: ID
+    public let title: Title
     public let content: Content
     public let link: Link
-    public let imVoteSum: Label
-    public let imContentType: ContentType
-    public let imVoteCount: Label
+    public let voteSum: VoteSum
+    public let contentType: ContentType
+    public let voteCount: VoteCount
+    
+    public typealias Rating = Label
+    public typealias Version = Label
+    public typealias ID = Label
+    public typealias Title = Label
+    public typealias VoteSum = Label
+    public typealias VoteCount = Label
+    
+    enum CodingKeys: String, CodingKey {
+        case rating = "im:rating"
+        case version = "im:version"
+        case voteSum = "im:voteSum"
+        case contentType = "im:contentType"
+        case voteCount = "im:voteCount"
+        case author , updated, id, title, content, link
+    }
 }
 
 public struct Feed: Codable {
