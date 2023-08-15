@@ -6,6 +6,17 @@ import Foundation
 public struct Scraper {
     public init() {}
 
+    public func getReview(
+        _ id: Int,
+        country: Country = .US,
+        page: Int,
+        sortBy: SortedBy
+    ) async throws -> Review {
+        let url = "\(baseURL)/\(country.rawValue.lowercased())/rss/customerreview/page=\(page)/id=\(id)/sortby=\(sortBy)/json"
+        let review : Review = try await get(url)
+        return review
+    }
+    
     public func getRanking(
         _ rankingType: RankingType,
         country: Country = .US,
