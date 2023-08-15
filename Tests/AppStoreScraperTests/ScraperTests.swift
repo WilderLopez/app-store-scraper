@@ -16,7 +16,9 @@ final class ScraperTests: XCTestCase {
 
     func testGetApplication() async throws {
         let scraper = Scraper()
-        let application = try await scraper.getApplication(668357845)
+        let application = try await scraper.getApplication(1557932265)
+        debugPrint("Score: \(application?.score)")
+        debugPrint("Reviews: \(application?.reviews)")
         XCTAssertNotNil(application)
     }
     
