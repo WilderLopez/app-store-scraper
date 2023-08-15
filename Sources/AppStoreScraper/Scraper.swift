@@ -12,7 +12,7 @@ public struct Scraper {
         page: Int,
         sortBy: SortedBy
     ) async throws -> Review {
-        let url = "\(baseURL)/\(country.rawValue.lowercased())/rss/customerreview/page=\(page)/id=\(id)/sortby=\(sortBy)/json"
+        let url = "\(baseURL)/\(country.rawValue.lowercased())/rss/customerreview/page=\(page)/id=\(id)/sortby=\(sortBy.rawValue)/json"
         let review : Review = try await get(url)
         return review
     }
